@@ -37,13 +37,13 @@ function App() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    function fetchUrl() {
-      fetch(initialUrl)
+    function fetchData() {
+      fetch(fetchUrl)
         .then((response) => response.json())
         .then((data) => setMovies(data.results))
         .catch((error) => console.error(error));
     }
-    fetchUrl(initialUrl);
+    fetchData();
   }, [fetchUrl]);
 
   const getMovies = (movieType) => {
@@ -102,7 +102,9 @@ function Header() {
   return (
     <Grid className="header" container spacing={2} sx={{ flexGrow: 1 }}>
       <Grid xs={1}>
-        <Link href="/">🔙</Link>
+        <Button color="primary">
+          <Link href="/">↩</Link>
+        </Button>
       </Grid>
       <Grid xs={7}>
         <nav className="navigation">
@@ -130,7 +132,6 @@ function Header() {
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-            onKeyDown={searchMovies}
           />
         </Grid>
         <Grid xs={4}>
@@ -165,7 +166,7 @@ function MovieList() {
             >
               <CardOverflow>
                 <AspectRatio ratio="1">
-                  <img
+                  <Image
                     src={
                       item.poster_path == null
                         ? defaultMovieImg
@@ -174,12 +175,12 @@ function MovieList() {
                     srcSet={
                       item.poster_path == null
                         ? defaultMovieImg
-                        : imgUrl +
-                          item.poster_path +
-                          `?auto=format&fit=crop&w=318&dpr=2 2x`
+                        : `${imgUrl}${item.poster_path}?auto=format&fit=crop&w=318&dpr=2 2x`
                     }
                     loading="lazy"
                     alt={item.title}
+                    width={318}
+                    height={475}
                   />
                 </AspectRatio>
               </CardOverflow>
