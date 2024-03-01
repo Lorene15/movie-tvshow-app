@@ -31,3 +31,28 @@ body {
     text-wrap: balance;
   }
 }
+
+.header {
+  padding: 10px 30px;
+}
+.navigation {
+  display: flex;
+  gap: 2rem;
+}
+.navigation a {
+  padding: 4px 15px;
+}
+
+.overview {
+  height: 90px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.no-data-msg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
