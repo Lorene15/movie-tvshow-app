@@ -102,15 +102,15 @@ function Header() {
   return (
     <Grid className="header" container spacing={2} sx={{ flexGrow: 1 }}>
       <Grid xs={1}>
-        <Button color="primary">
-          <Link href="/">↩</Link>
+        <Button color="success">
+          <Link href="/">🔙</Link>
         </Button>
       </Grid>
       <Grid xs={7}>
         <nav className="navigation">
           {arr.map((value, position) => (
             <MuiLink
-              color="warning"
+              color="success"
               variant="solid"
               key={position}
               name={value}
@@ -124,7 +124,7 @@ function Header() {
       <Grid container xs={4} spacing={2} alignItems="center">
         <Grid xs={8}>
           <Input
-            color="warning"
+            color="success"
             size="sm"
             variant="soft"
             placeholder="Search a movie..."
@@ -135,7 +135,7 @@ function Header() {
           />
         </Grid>
         <Grid xs={4}>
-          <Button onClick={searchMovies} variant="solid" color="warning">
+          <Button onClick={searchMovies} variant="solid" color="success">
             Search Movie
           </Button>
         </Grid>
@@ -159,7 +159,7 @@ function MovieList() {
         movies.map((item) => (
           <Grid xs={12} sm={6} md={4} lg={3} xl={2} key={item.id}>
             <Card
-              color="warning"
+              color="success"
               orientation="vertical"
               size="md"
               variant="soft"

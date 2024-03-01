@@ -41,7 +41,7 @@ function App() {
       fetch(fetchUrl)
         .then((response) => response.json())
         .then((data) => setTvShows(data.results))
-        .catch((error) => console.error(error));
+        .catch((err) => console.error(err));
     }
     fetchData();
   }, [fetchUrl]);
@@ -103,7 +103,7 @@ function Header() {
     <Grid className="header" container spacing={2} sx={{ flexGrow: 1 }}>
       <Grid xs={1}>
         <Button color="primary">
-          <Link href="/">↩</Link>
+          <Link href="/">🔙</Link>
         </Button>
       </Grid>
       <Grid xs={7}>
@@ -177,15 +177,15 @@ function TvShowList() {
                         ? defaultTvShowImg
                         : `${imgUrl}${item.poster_path}?auto=format&fit=crop&w=318&dpr=2 2x`
                     }
-                    loading="lazy"
-                    alt={item.title}
+                    alt={item.original_name}
                     width={318}
                     height={475}
+                    priority
                   />
                 </AspectRatio>
               </CardOverflow>
               <CardContent>
-                <Typography level="title-md">{item.title}</Typography>
+                <Typography level="title-md">{item.original_name}</Typography>
                 <div className="overview">
                   {item.overview
                     ? item.overview
@@ -203,7 +203,7 @@ function TvShowList() {
                     fontWeight="md"
                     textColor="text.secondary"
                   >
-                    Total votes: {item.vote_count}
+                    Vote: {item.vote_count}
                   </Typography>
                   <Divider orientation="vertical" />
                   <Typography
